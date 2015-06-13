@@ -1,0 +1,19 @@
+# Simple BMI calculator
+push "Quetelet index calculator"
+print
+push "Enter yer mass in kg: "
+input
+string_to_fixed
+push "Enter yer height in metres: "
+input
+string_to_fixed
+
+dup
+fmul
+fdiv
+
+fixed_to_string
+push "Your BMI is"
+print
+print
+

@@ -1,0 +1,83 @@
+# Calculates a square root of a number using the Babylonian method.
+# Read more at http://www.mathpages.com/HOME/kmath190.htm
+
+push "Input: "
+input
+string_to_fixed
+
+dup
+
+# Bad first approximation of the square root.
+fixed 0.5
+fmul
+
+
+push 30
+
+do
+# S a i
+    rot
+# a i S
+    rot
+# i S a
+    over
+# i S a S
+    over
+# i S a S a
+    fdiv
+# i S a S/a
+
+    over
+# i S a S/a a
+    swap
+# i S a a S/a
+
+    add
+# i S a a+(S/a)
+    fixed 0.5
+# i S a a+(S/a) 0.5
+    fmul
+# i S a (a+(S/a))/2
+    dup
+# i S a a_new a_new
+
+    rot
+# i S a_new a_new a
+    sub
+# i S a_new a_new-a
+    abs
+# i S a_new diff
+
+    swap
+
+    dup
+    fixed_to_string
+    print
+
+    swap
+
+# If the change from last approximation is less than 0.04
+# we're close enough.
+    fixed 0.04
+    test gtr
+    if accurate_enough
+
+    rot
+# S a_new i
+    dec
+loop
+go print_result
+
+:accurate_enough
+rot
+push "Result is accurate enough"
+print
+# remove the loop iterator, usually loop cmd does this
+pop
+
+:print_result
+push "Square root:"
+print
+dup
+fixed_to_string
+print
