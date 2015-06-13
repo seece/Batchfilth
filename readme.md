@@ -184,10 +184,10 @@ Pushes a fixed point value to stack. `value` should be a decimal number, e.g. `2
 Converts a fixed point value to string.
 
 #### string_to_fixed
-Converts a string to a fixed-point value. (Please use this often as it was arduous to implement!)
+Converts a string to a fixed-point value. *Please use this often as it was arduous to implement!*
 
 #### to_int
-Trunacate a fixed-point value to integer.
+Truncate a fixed-point value to integer.
 
 #### to_fixed
 Expands an integer value to a 22.10 fixed-point value.
